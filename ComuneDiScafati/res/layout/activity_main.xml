@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/buttonNewsedEventi"
+        android:layout_width="wrap_content"
+        android:layout_height="155dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingTop="3dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:onClick="newsedEventiClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_news" />
+    
+    <ImageView
+        android:id="@+id/buttonCenniStorici"
+        android:layout_width="160dp"
+        android:layout_height="155dp"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="3dp"
+        android:layout_below="@+id/buttonNewsedEventi"
+        android:onClick="cenniStoriciClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_cennistorici" />
+    
+    <ImageView
+        android:id="@+id/buttonAmministrazione"
+        android:layout_width="160dp"
+        android:layout_height="155dp"
+        android:paddingRight="3dp"
+        android:layout_alignTop="@+id/buttonCenniStorici"
+        android:layout_alignRight="@+id/buttonNewsedEventi"
+        android:onClick="amministrazioneClick"
+        android:src="@drawable/btn_amministrazione"
+        android:scaleType="fitXY" />
+    
+    <ImageView
+        android:id="@+id/buttonSegnalazioni"
+        android:layout_width="160dp"
+        android:layout_height="155dp"
+        android:paddingLeft="3dp"
+        android:paddingBottom="3dp"
+        android:layout_alignLeft="@+id/buttonCenniStorici"
+        android:layout_below="@+id/buttonCenniStorici"
+        android:onClick="segnalazioniClick"
+        android:src="@drawable/btn_segnalazioni"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/buttonInfo"
+        android:layout_width="160dp"
+        android:layout_height="155dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="3dp"
+        android:layout_alignTop="@+id/buttonSegnalazioni"
+        android:layout_alignRight="@+id/buttonAmministrazione"
+        android:onClick="infoClick"
+        android:src="@drawable/btn_info"
+        android:scaleType="fitXY" />
+
+</RelativeLayout>

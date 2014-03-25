@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Activity_VisInfoUtili" >
+
+    <ImageView
+        android:id="@+id/imgInfo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/imgnd" />
+
+    <TextView
+        android:id="@+id/titoloInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgInfo"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imgInfo"
+        android:layout_toRightOf="@+id/imgInfo"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall" >
+    </TextView>
+<ScrollView
+        android:id="@+id/scrollDescrInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/imgInfo"
+        android:layout_alignRight="@+id/titoloInfo"
+        android:layout_below="@+id/imgInfo"
+        android:layout_marginTop="14dp">
+
+            <TextView
+                android:id="@+id/descrInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</ScrollView>
+
+</RelativeLayout>

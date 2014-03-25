@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="amministrazione">
+        <item>Il Sindaco</item>
+        <item>La Giunta</item>
+        <item>Il Consiglio Comunale</item>
+        <item>Statuto Comunale</item>
+        <item>Il Segretario Generale</item>
+        <item>Organizzazione</item>
+        <item>Regolamenti</item>
+        <item>Biblioteca Comunale</item>
+        <item>Amministrazione Trasparente</item>
+        <item>Scafati Solidale</item>
+        <item>Albo Fornitori</item>
+        <item>Links e posta certificata</item>
+        <item>Tributi</item>
+        <item>PIU Europa</item>
+    </string-array>
+    <string-array name="infoutili">
+        <item>Numeri Utili</item>
+        <item>Istituti Scolastici</item>
+        <item>Farmacie di Turno</item>
+        <item>Benzinai</item>
+        <item>Banche</item>
+        <item>Pizzerie e Ristoranti</item>
+        <item>Luoghi di culto</item>
+    </string-array>
+
+    <string name="app_name">Comune di Scafati</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_section1">Storia</string>
+    <string name="title_section2">Approfondimenti</string>
+    <string name="title_section3">News</string>
+    <string name="title_section4">Eventi</string>
+    <string name="title_activity_activity__galleria_fotografica">Galleria Fotografica</string>
+
+</resources>
