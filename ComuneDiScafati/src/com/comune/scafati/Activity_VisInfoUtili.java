@@ -5,8 +5,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 /* Questa classe viene visualizzata quando l'utente seleziona un elemento
  * della lista presente nell'Activity_InformazioniUtili, e serve per
  * visualizzare le informazioni di quel dato elemento. */
@@ -18,6 +22,10 @@ public class Activity_VisInfoUtili extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_activity__visualizzatore_info);
 		Intent intent=getIntent();
+		
+		ImageButton ButtonChiamata;
+		ImageButton ButtonMappa;
+		ImageButton ButtonPreferiti;
 		
 		String tipo = intent.getStringExtra("Tipo");
 		
@@ -40,11 +48,16 @@ public class Activity_VisInfoUtili extends Activity {
 		int numInfo = c.getCount();
 		
 		// Formatto e visualizzo i dati prelevati dal database.
-		TextView testo =(TextView)findViewById(R.id.descrInfo);
+		TextView testo =(TextView)findViewById(R.id.descrInfo)
+				;
+		ButtonMappa = (ImageButton)findViewById(R.id.ButtonMappa);
+		
 		for(int i=0;i<numInfo;i++)
 		{
 			c.moveToPosition(i);
-			testo.append("\n"+c.getString(0)+"\n"+c.getString(1)+"\n\n-------------------\n");
+			testo.append("\n"+c.getString(0)+"\n"+c.getString(1));
+				 
+			testo.append("\n\n-------------------\n");
 		}
 		db.close();
 	}
@@ -56,4 +69,5 @@ public class Activity_VisInfoUtili extends Activity {
 				menu);
 		return true;
 	}	
+	
 }
