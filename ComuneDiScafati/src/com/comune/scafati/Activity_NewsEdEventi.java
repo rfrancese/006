@@ -101,7 +101,7 @@ public class Activity_NewsEdEventi extends FragmentActivity implements
 		public Fragment getItem(int position) {
 			/* getItem viene chiamata per istanziare il fragment della pagina richiesta.
 			 * Restituisce un DummySectionFragment (definito come una static inner class
-			 * più sotto) con il numero della pagina come suo unico argomento. */
+			 * piu' sotto) con il numero della pagina come suo unico argomento. */
 			Fragment fragment = null;
 		    Bundle args = new Bundle();
 
