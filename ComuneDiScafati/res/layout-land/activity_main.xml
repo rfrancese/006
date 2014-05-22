@@ -1,0 +1,70 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"
+    android:shrinkColumns="*"
+    android:stretchColumns="*"
+    android:weightSum="100" >
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="50" >
+ 
+    <ImageView
+        android:id="@+id/buttonNewsedEventi"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="3dp"
+        android:paddingLeft="3dp"
+        android:onClick="newsedEventiClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_news"
+        android:layout_span="2" />
+    <ImageView
+        android:id="@+id/buttonSegnalazioni"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingTop="3dp"
+        android:paddingRight="3dp"
+        android:onClick="segnalazioniClick"
+        android:src="@drawable/btn_segnalazioni"
+        android:scaleType="fitXY" />
+    </TableRow>
+
+     <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="50" >   
+    <ImageView
+        android:id="@+id/buttonCenniStorici"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="3dp"
+        android:paddingBottom="3dp"
+        android:onClick="cenniStoriciClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_cennistorici" />
+    
+    <ImageView
+        android:id="@+id/buttonAmministrazione"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingBottom="3dp"
+        android:onClick="amministrazioneClick"
+        android:src="@drawable/btn_amministrazione"
+        android:scaleType="fitXY" />
+    
+        <ImageView
+        android:id="@+id/buttonInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingRight="3dp"
+        android:paddingBottom="3dp"
+        android:onClick="infoClick"
+        android:src="@drawable/btn_info"
+        android:scaleType="fitXY" />
+        </TableRow>
+    
+</TableLayout>
