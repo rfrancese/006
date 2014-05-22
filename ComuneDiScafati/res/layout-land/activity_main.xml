@@ -22,14 +22,15 @@
         android:scaleType="fitXY"
         android:src="@drawable/btn_news"
         android:layout_span="2" />
+
     <ImageView
-        android:id="@+id/buttonSegnalazioni"
+        android:id="@+id/buttonInfo"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:paddingTop="3dp"
         android:paddingRight="3dp"
-        android:onClick="segnalazioniClick"
-        android:src="@drawable/btn_segnalazioni"
+        android:onClick="infoClick"
+        android:src="@drawable/btn_info"
         android:scaleType="fitXY" />
     </TableRow>
 
@@ -56,14 +57,14 @@
         android:src="@drawable/btn_amministrazione"
         android:scaleType="fitXY" />
     
-        <ImageView
-        android:id="@+id/buttonInfo"
+    <ImageView
+        android:id="@+id/buttonSegnalazioni"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:paddingRight="3dp"
         android:paddingBottom="3dp"
-        android:onClick="infoClick"
-        android:src="@drawable/btn_info"
+        android:onClick="segnalazioniClick"
+        android:src="@drawable/btn_segnalazioni"
         android:scaleType="fitXY" />
         </TableRow>
     
