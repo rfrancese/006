@@ -24,7 +24,7 @@ import android.widget.SimpleAdapter;
 /* Questa classe viene visualizzata quando l'utente seleziona
  * il pulsante "Cenni Storici" nel MainActivity, e mostra le due
  * sezioni "Storia" e "Approfondimenti" che contengono la storia
- * della città con alcuni approfondimenti e gallerie fotografiche. */
+ * della citta' con alcuni approfondimenti e gallerie fotografiche. */
 public class Activity_CenniStorici extends FragmentActivity implements
 		ActionBar.TabListener {
 
@@ -103,7 +103,7 @@ public class Activity_CenniStorici extends FragmentActivity implements
 		public Fragment getItem(int position) {
 			/* getItem viene chiamata per istanziare il fragment della pagina richiesta.
 			 * Restituisce un DummySectionFragment (definito come una static inner class
-			 * più sotto) con il numero della pagina come suo unico argomento. */
+			 * piu' sotto) con il numero della pagina come suo unico argomento. */
 			Fragment fragment = null;
 		    Bundle args = new Bundle();
 
@@ -178,8 +178,8 @@ public class Activity_CenniStorici extends FragmentActivity implements
 			 ListView listview =(ListView)rootView.findViewById(R.id.listView1);
 			 
 	           // Dichiaro due Array di tipo String che contengono rispettivamente i titoli e le descrizioni delle gallerie.
-	           String[] ListItems = new String[] {"Scorci,borghi e vedute panoramiche della città di Scafati", "Ambiente e beni archittettonici della città", "Arte e scultura Scafati"};
-	           String[] SubItems = new String[] {"Visualizza le immagini fotografiche della città di Scafati. La storia, le abitudini e le tradizioni", "Scopri il Palazzo Santonicola, il Polverificio e la villa comunale", "Monumenti, arte e scultura si fondono in una città ricca di storia"};
+	           String[] ListItems = new String[] {"Scorci,borghi e vedute panoramiche della citta' di Scafati", "Ambiente e beni archittettonici della citta'", "Arte e scultura Scafati"};
+	           String[] SubItems = new String[] {"Visualizza le immagini fotografiche della citta' di Scafati. La storia, le abitudini e le tradizioni", "Scopri il Palazzo Santonicola, il Polverificio e la villa comunale", "Monumenti, arte e scultura si fondono in una citta' ricca di storia"};
 	            
 	           List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 	            for (int i=0; i<ListItems.length; i++) {
