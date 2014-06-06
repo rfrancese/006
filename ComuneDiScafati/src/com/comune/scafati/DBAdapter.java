@@ -175,4 +175,23 @@ public class DBAdapter extends ListActivity
     	String query = "select Indirizzo from FotoGalleria where CodiceG='"+id+"';";
     	return db.rawQuery(query, null);
     }
+    //Restituisce l'indirizzo per Google Maps
+    public Cursor getIndirizziGM(String tipo)
+    {
+    	String query = "select Indirizzo from Indirizzi,InfoUtili where Indirizzi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"';";
+    	return db.rawQuery(query, null);
+    }
+  //Restituisce il numero di telefono corrispondente al tipo(Visualizzatore InfoUtili)
+    public Cursor getTelefono(String tipo)
+    {
+    	String query = "select NumeroTelefonico from NumeriTelefonici,InfoUtili where NumeriTelefonici.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"';";
+    	return db.rawQuery(query, null);
+    }
+   //Restituisce il numero di telefono corrispondente al plesso(Visualizzatore InfoUtili)
+    public Cursor getTelefonoPlessi(String tipo)
+    {
+    	String query = "select NumeroTelefonico from Plessi,InfoUtili where Plessi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"';";
+    	return db.rawQuery(query, null);
+    }
+    
 }
