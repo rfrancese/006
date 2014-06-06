@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -30,6 +31,7 @@ public class Activity_CenniStorici extends FragmentActivity implements
 
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	ViewPager mViewPager;
+	static ListView listview;
 	
 	// Metodo che viene chiamato alla creazione dell'activity.
 	@Override
@@ -175,7 +177,7 @@ public class Activity_CenniStorici extends FragmentActivity implements
 			View rootView = inflater.inflate(
 					R.layout.fragment_approfondimenti, container,
 					false);
-			 ListView listview =(ListView)rootView.findViewById(R.id.listView1);
+			 listview =(ListView)rootView.findViewById(R.id.listView1);
 			 
 	           // Dichiaro due Array di tipo String che contengono rispettivamente i titoli e le descrizioni delle gallerie.
 	           String[] ListItems = new String[] {"Scorci,borghi e vedute panoramiche della citta' di Scafati", "Ambiente e beni archittettonici della citta'", "Arte e scultura Scafati"};
@@ -209,6 +211,15 @@ public class Activity_CenniStorici extends FragmentActivity implements
 		        });
 			return rootView;
 		}
-	}      
+	}  
+	public void onWindowFocusChanged(boolean hasFocus) {
+		 // get content height
+		 int contentHeight = listview.getChildAt(0).getHeight();
+
+		 // set listview height
+		 LayoutParams lp = listview.getLayoutParams();
+		 lp.height = contentHeight*3;
+		 listview.setLayoutParams(lp);
+		}
 }
 
