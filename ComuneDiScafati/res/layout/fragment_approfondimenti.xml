@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -22,15 +22,14 @@
         android:layout_alignTop="@+id/section_label" >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="9000dp"
             android:orientation="vertical" >
     <TextView
         android:id="@+id/titoloDoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+
         android:text="Galleria Fotografica"
         android:textColor="#a7d5e1"
         android:textSize="20sp"
@@ -39,21 +38,18 @@
        android:id="@+id/imageView1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/section_label"
        android:src="@drawable/lineablu1" />
+
      <ListView
        android:id="@+id/listView1"
-       android:layout_width="match_parent"
-       android:layout_height="222dp"
-       android:layout_alignParentLeft="true"
-       android:layout_below="@+id/section_label">
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content" >
    </ListView>
-   <TextView
+
+     <TextView
        android:id="@+id/descrDoc"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_alignBottom="@+id/scrollView1"
-       android:layout_alignParentLeft="true"
        android:text="Il Territorio"
        android:textColor="#a7d5e1"
        android:textSize="20sp"
@@ -63,15 +59,12 @@
        android:id="@+id/imageView2"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/descrDoc"
        android:src="@drawable/lineablu1" />
    
     <TextView
        android:id="@+id/textView3"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_alignBottom="@+id/scrollView1"
-       android:layout_alignParentLeft="true"
        android:textSize="20sp"
        android:text="Scafati sorge sulle rive del fiume Sarno e ai piedi del Vesuvio.\n\nNotevole centro agricolo commerciale e importante esportatore di prodotti ortofrutticoli, vi è sviluppato altresì l'allevamento bovino. E' sede di industrie conserviere alimentari, tessili e meccaniche. Di antica origine - già abitata in epoca romana - Scafati è stata in passato un importante centro strategico. Nei suoi pressi sorge il santuario barocco della Madonna dei Bagni, risalente al secolo XVII e restaurata dopo i danni subiti durante la seconda guerra mondiale. La popolazione che risiede nel Comune di Scafati ammonta complessivamente a 47.082 abitanti (Dati Istat - anno 2001), con una densità abitativa pari a 2.298 abitanti per Kmq.\n\n\nIl C.A.P. di riferimento della cittadina è 84018, il Prefisso telefonico 081. Confina a Nord Ovest con Poggiomarino, a Ovest con Pompei, a Sud con Sant'Antonio Abate , a Est con Angri e San Marzano sul Sarno, a Nord Est con San Valentino Torio.\n\n\nProfilo economico\nL'economia del Comune di Scafati poggia essenzialmente sulle attività industriali, con specifico riferimento a quelle inerenti la trasformazione di prodotti agricoli ed agro-alimentari, agricoltura, nonché sul commercio (soprattutto media e piccola distribuzione).Per quanto concerne il settore industriale, sono presenti alcune unità operative nel settore tessile, metallurgico e meccanico, mentre conservano un posto di primo piano le unità operanti nel settore della lavorazione a carattere stagionale: conserviero, tabacchicolo, frantoiano, e le altre industrie alimentari che utilizzano i prodotti diretti o indiretti del suolo, come i pastifici e le casearie.
 Con riferimento al settore agricolo, per mantenere un certo livello di competitività rimane la strada della riconversione culturale consentita dalla fertilità naturale. Inoltre, la maggior parte delle poche aziende agricole, forestali e zootecniche esistenti, è a conduzione diretta del coltivatore.
