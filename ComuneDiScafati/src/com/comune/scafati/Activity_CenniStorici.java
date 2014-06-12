@@ -19,7 +19,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.webkit.WebView;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 /* Questa classe viene visualizzata quando l'utente seleziona
@@ -159,6 +161,12 @@ public class Activity_CenniStorici extends FragmentActivity implements
 			View rootView = inflater.inflate(
 					R.layout.fragment_storia, container,
 					false);
+			WebView view = new WebView(getActivity());
+		    view.setVerticalScrollBarEnabled(false);
+
+		    ((LinearLayout)rootView.findViewById(R.id.insert_webview)).addView(view);
+
+		    view.loadUrl("file:///android_asset/html/storia.html");
 			return rootView;
 		}
 	}
@@ -209,6 +217,14 @@ public class Activity_CenniStorici extends FragmentActivity implements
 			        	startActivity(galleriaIntent);
 		        	}
 		        });
+	            
+				WebView view = new WebView(getActivity());
+			    view.setVerticalScrollBarEnabled(false);
+
+			    ((LinearLayout)rootView.findViewById(R.id.insert_webview2)).addView(view);
+
+			    view.loadUrl("file:///android_asset/html/approfondimenti.html");
+	            
 			return rootView;
 		}
 	}  

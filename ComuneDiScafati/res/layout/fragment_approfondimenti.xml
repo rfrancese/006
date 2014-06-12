@@ -61,20 +61,13 @@
        android:layout_height="wrap_content"
        android:src="@drawable/lineablu1" />
    
-    <TextView
-       android:id="@+id/textView3"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:textSize="20sp"
-       android:text="Scafati sorge sulle rive del fiume Sarno e ai piedi del Vesuvio.\n\nNotevole centro agricolo commerciale e importante esportatore di prodotti ortofrutticoli, vi è sviluppato altresì l'allevamento bovino. E' sede di industrie conserviere alimentari, tessili e meccaniche. Di antica origine - già abitata in epoca romana - Scafati è stata in passato un importante centro strategico. Nei suoi pressi sorge il santuario barocco della Madonna dei Bagni, risalente al secolo XVII e restaurata dopo i danni subiti durante la seconda guerra mondiale. La popolazione che risiede nel Comune di Scafati ammonta complessivamente a 47.082 abitanti (Dati Istat - anno 2001), con una densità abitativa pari a 2.298 abitanti per Kmq.\n\n\nIl C.A.P. di riferimento della cittadina è 84018, il Prefisso telefonico 081. Confina a Nord Ovest con Poggiomarino, a Ovest con Pompei, a Sud con Sant'Antonio Abate , a Est con Angri e San Marzano sul Sarno, a Nord Est con San Valentino Torio.\n\n\nProfilo economico\nL'economia del Comune di Scafati poggia essenzialmente sulle attività industriali, con specifico riferimento a quelle inerenti la trasformazione di prodotti agricoli ed agro-alimentari, agricoltura, nonché sul commercio (soprattutto media e piccola distribuzione).Per quanto concerne il settore industriale, sono presenti alcune unità operative nel settore tessile, metallurgico e meccanico, mentre conservano un posto di primo piano le unità operanti nel settore della lavorazione a carattere stagionale: conserviero, tabacchicolo, frantoiano, e le altre industrie alimentari che utilizzano i prodotti diretti o indiretti del suolo, come i pastifici e le casearie.
-Con riferimento al settore agricolo, per mantenere un certo livello di competitività rimane la strada della riconversione culturale consentita dalla fertilità naturale. Inoltre, la maggior parte delle poche aziende agricole, forestali e zootecniche esistenti, è a conduzione diretta del coltivatore.
-La città di Scafati non presenta una precisa delimitazione di zone caratteristiche per colture tipiche in esse praticate, fatta eccezione per il pomodoro, che resta uno dei prodotti più importanti per la trasformazione.
-La città di Scafati si caratterizza anche per un rilevante numero di aziende che operano nel ramo degli scambi commerciali, diretta conseguenza del fatto che hanno contribuito all'espandersi delle attività commerciali numerosi fattori: le importanti correnti di traffico per l'esportazione di alcuni prodotti; i numerosi prodotti dell'agricoltura, dell'industria e dell'artigianato in numerosi paesi; l'importazione di materie prime, combustibili, merci e derrate varie necessarie all'industria ed all'agricoltura; la crescente richiesta di derrate e merci per completare il fabbisogno alimentare, dell'arredamento e abbigliamento; la configurazione geografica della provincia.
-Il commercio in genere, ma più in particolare quello al minuto, è praticato da aziende di piccola e media importanza. Nel centro urbano è frequente l'esercizio al dettaglio specializzato in un solo settore, mentre nelle altre zone il commercio vine esercitato in forma mista.
-Il commercio ambulante, poi, ha notevolmente migliorato le proprie attrezzature, tanto che gran parte degli operatori dispongono, per partecipare alle numerose fiere ed ai ricorrenti mercati, di automezzi moderni ed assumono sul posto persone per essere aiutati nella vendita.
-Il traffico commerciale si svolge con molti paesi, ma i maggiori clienti sono la Gran Bretagna, gli USA e gran parte dei Paesi dell'Africa e del Medio Oriente, che acquistano principalmente conserve di pomodoro. Di fondamentale importanza sono altresì le importazioni dall'estero di materie prime ed in particolare di quelle ausiliari, vitali per il settore conserviero.
+        <LinearLayout
+            android:id="@+id/insert_webview2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-\n\n\nFonte: Relazione Previsionale e Programmatica 2004-2006 del Comune di Scafati" />
+        </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
