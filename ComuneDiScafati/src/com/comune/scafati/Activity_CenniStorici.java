@@ -230,11 +230,15 @@ public class Activity_CenniStorici extends FragmentActivity implements
 	}  
 	public void onWindowFocusChanged(boolean hasFocus) {
 		 // get content height
-		 int contentHeight = listview.getChildAt(0).getHeight();
+		 int firstPosition = listview.getFirstVisiblePosition() - listview.getHeaderViewsCount();
+		 int contentHeight = 0;
+		 
+		 for(int i=0; i<3; i++)
+			 contentHeight += listview.getChildAt(i+firstPosition).getHeight();
 
 		 // set listview height
 		 LayoutParams lp = listview.getLayoutParams();
-		 lp.height = contentHeight*3;
+		 lp.height = contentHeight;
 		 listview.setLayoutParams(lp);
 		}
 }

@@ -43,7 +43,7 @@
      <ListView
        android:id="@+id/listView1"
        android:layout_width="fill_parent"
-       android:layout_height="wrap_content" >
+       android:layout_height="9000dp" >
    </ListView>
 
      <TextView
