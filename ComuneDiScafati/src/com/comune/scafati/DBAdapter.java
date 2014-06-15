@@ -32,7 +32,7 @@ public class DBAdapter extends ListActivity
         DBHelper = new DatabaseHelper(context);
     }
     
-    // Sottoclasse che si occupa di verificare se il database esiste giˆ, e in caso contrario lo crea.
+    // Sottoclasse che si occupa di verificare se il database esiste gia', e in caso contrario lo crea.
     private static class DatabaseHelper extends SQLiteOpenHelper 
     {
     	private static String DATABASE_NAME = "comuneScafati";
