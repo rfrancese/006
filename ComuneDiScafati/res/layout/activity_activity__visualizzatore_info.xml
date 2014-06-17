@@ -29,45 +29,18 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall" >
     </TextView>
-    
- 		
-<ScrollView
-        android:id="@+id/scrollDescrInfo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignLeft="@+id/imgInfo"
-        android:layout_alignRight="@+id/titoloInfo"
-        android:layout_below="@+id/imgInfo"
-        android:layout_marginTop="14dp">
-
-<TableLayout 
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".Activity_VisInfoUtili"
-    android:shrinkColumns="*"
-    android:stretchColumns="*"
-    android:weightSum="100" >
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="100" >
+    	
+	
  
-    
-                <TextView
-                android:id="@+id/descrInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-            
-                <ImageButton
-      		  android:id="@+id/ButtonMappa"
-      		  android:layout_width="fill_parent"
-      		  android:layout_height="wrap_content"
-      		  android:src="@drawable/pdf" />
-     </TableRow>	
- </TableLayout>
-</ScrollView>
+               <ListView
+                   android:id="@+id/listVisInfoUtili"
+                   android:layout_width="fill_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_alignLeft="@+id/imgInfo"
+        		   android:layout_alignRight="@+id/titoloInfo"
+        		   android:layout_below="@+id/imgInfo"
+        		   android:layout_marginTop="14dp" >
+                   
+				</ListView>
 
 </RelativeLayout>
