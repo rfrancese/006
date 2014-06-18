@@ -56,9 +56,9 @@ public class Activity_VisInfoUtili extends Activity {
 		
 	
 		//Costruzione adapter
-		String[] from = { "Titolo","Descrizione","Chiamata","ID", "Mappa"};
+		String[] from = { "Titolo","Descrizione"};
 		
-		int[] to={R.id.titolodescr,R.id.descrInfo,R.id.ButtonChiamata,R.id.ButtonPreferito,R.id.ButtonMappa};
+		int[] to={R.id.titolodescr,R.id.descrInfo};
 		
 		SimpleAdapter adapter=new SimpleAdapter(
 				 this,
@@ -88,25 +88,19 @@ public class Activity_VisInfoUtili extends Activity {
 		 System.out.print("\n"+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");
 		 System.out.print("\n"+c.getString(c.getColumnIndex("Indirizzo"))+"\n");
 		 listavisinfoutili.add(  creaMappa( c.getString(c.getColumnIndex("Nome")),
-				 							c.getString(c.getColumnIndex("Descrizione")),
-				 							c.getString(c.getColumnIndex("NumeroTelefono")),
-				 							c.getString(c.getColumnIndex("InfoUtili.CodiceIU")),
-				 							c.getString(c.getColumnIndex("Indirizzo")),
-				 							i));
+				 							c.getString(c.getColumnIndex("Descrizione"))
+				 							));
 		 
 		}
         return listavisinfoutili;
     }
 	
-	 private HashMap<String, String> creaMappa(String titolo, String descrizione,String Chiamata, String ID, String Mappa, int i) {
+	 private HashMap<String, String> creaMappa(String titolo, String descrizione) {
 		 
 		    HashMap<String, String> map = new HashMap<String, String>();
 		    
 		    map.put("Titolo", titolo);
 	    	map.put("Descrizione", descrizione);
-	    	map.put("Chiamata", Chiamata);
-	    	map.put("ID", ID);
-	    	map.put("Mappa", Mappa);
 	 
 	    	return map;
 	    }   
