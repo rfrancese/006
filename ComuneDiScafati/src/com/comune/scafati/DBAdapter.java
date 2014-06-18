@@ -153,8 +153,8 @@ public class DBAdapter extends ListActivity
     }
     // Restituisce tutti gli elementi che si riferscono a un tipo di Informazione utile.
     public Cursor getIU(String tipo)
-    {
-    	String query = "select Nome,Descrizione from InfoUtili where Tipo='"+tipo+"';";
+    {  String query=" select InfoUtili.CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo from InfoUtili,NumeriTelefonici,Indirizzi where NumeriTelefonici.CodiceIU=InfoUtili.CodiceIU and InfoUtili.CodiceIU=Indirizzi.CodiceIU and Tipo='"+tipo+"';";
+    	//String query = "select Nome,Descrizione from InfoUtili where Tipo='"+tipo+"';";
     	return db.rawQuery(query, null);
     }
     // Restituisce gli elementi di una sottolista di Amministrazione.
@@ -175,23 +175,5 @@ public class DBAdapter extends ListActivity
     	String query = "select Indirizzo from FotoGalleria where CodiceG='"+id+"';";
     	return db.rawQuery(query, null);
     }
-    //Restituisce l'indirizzo per Google Maps
-    public Cursor getIndirizziGM(String tipo)
-    {
-    	String query = "select Indirizzo from Indirizzi,InfoUtili where Indirizzi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"';";
-    	return db.rawQuery(query, null);
-    }
-  //Restituisce il numero di telefono corrispondente al tipo(Visualizzatore InfoUtili)
-    public Cursor getTelefono(String tipo)
-    {
-    	String query = "select NumeroTelefonico from NumeriTelefonici,InfoUtili where NumeriTelefonici.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"';";
-    	return db.rawQuery(query, null);
-    }
-   //Restituisce il numero di telefono corrispondente al plesso(Visualizzatore InfoUtili)
-    public Cursor getTelefonoPlessi(String tipo)
-    {
-    	String query = "select NumeroTelefonico from Plessi,InfoUtili where Plessi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"';";
-    	return db.rawQuery(query, null);
-    }
-    
+   
 }

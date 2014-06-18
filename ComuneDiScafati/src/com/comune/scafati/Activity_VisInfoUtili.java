@@ -3,16 +3,14 @@ package com.comune.scafati;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageButton;
+
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -22,8 +20,7 @@ import android.widget.Toast;
  * della lista presente nell'Activity_InformazioniUtili, e serve per
  * visualizzare le informazioni di quel dato elemento. */
 public class Activity_VisInfoUtili extends Activity {
-	ListView listViewVIS;
-	int numInfo;
+	
 	// Metodo che viene chiamato alla creazione dell'activity.
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +46,10 @@ public class Activity_VisInfoUtili extends Activity {
 		db.open();
 		// Recupero dal database le informazioni utili del tipo richiesto.
 		Cursor c = db.getIU(tipo);
-		numInfo = c.getCount();
-		
+		int numInfo = c.getCount();
 		// Formatto e visualizzo i dati prelevati dal database.
 		
-		listViewVIS=(ListView)findViewById(R.id.listVisInfoUtili);
+		ListView listViewVIS=(ListView)findViewById(R.id.listVisInfoUtili);
 		
 		ArrayList<HashMap<String, String>> listavisinfoutili = new ArrayList<HashMap<String, String>>();
 		listavisinfoutili=riempiLista(listavisinfoutili,numInfo,c);
@@ -73,7 +69,7 @@ public class Activity_VisInfoUtili extends Activity {
                 );
 		
 		listViewVIS.setAdapter(adapter);
-		
+		System.out.print("\n"+numInfo+"\n");
 		db.close();
 	}
     
@@ -89,20 +85,36 @@ public class Activity_VisInfoUtili extends Activity {
 		for(int i=0;i<numInfo;i++)
 		{
 		 c.moveToPosition(i);
-		 listavisinfoutili.add(creaMappa(c.getString(c.getColumnIndex("Nome")),c.getString(c.getColumnIndex("Descrizione")),c.getString(c.getColumnIndex("Nome")),i));
+		 System.out.print("\n"+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");
+		 System.out.print("\n"+c.getString(c.getColumnIndex("Indirizzo"))+"\n");
+		 listavisinfoutili.add(  creaMappa( c.getString(c.getColumnIndex("Nome")),
+				 							c.getString(c.getColumnIndex("Descrizione")),
+				 							c.getString(c.getColumnIndex("NumeroTelefono")),
+				 							c.getString(c.getColumnIndex("InfoUtili.CodiceIU")),
+				 							c.getString(c.getColumnIndex("Indirizzo")),
+				 							i));
+		 
 		}
         return listavisinfoutili;
     }
 	
-	 private HashMap<String, String> creaMappa(String titolo, String descrizione, String Mappa, int i) {
+	 private HashMap<String, String> creaMappa(String titolo, String descrizione,String Chiamata, String ID, String Mappa, int i) {
 		 
 		    HashMap<String, String> map = new HashMap<String, String>();
 		    
 		    map.put("Titolo", titolo);
 	    	map.put("Descrizione", descrizione);
+	    	map.put("Chiamata", Chiamata);
+	    	map.put("ID", ID);
 	    	map.put("Mappa", Mappa);
 	 
 	    	return map;
 	    }   
+	public void EventoChiamata(View v)
+	{
+		String number = "tel:3463215001";
+        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number)); 
+        startActivity(callIntent);
+	}
 	
 }
