@@ -24,24 +24,42 @@
     			android:gravity="right"
     			android:layout_width="fill_parent"
     			android:layout_height="fill_parent"> 
-        	<ImageButton
-      		  android:id="@+id/ButtonChiamata"
-      		  android:layout_width="wrap_content"
-      		  android:layout_height="wrap_content"
-      		  android:src="@drawable/pdf" />
+    			<TableLayout 
+   				    android:layout_width="fill_parent"
+   				    android:layout_height="fill_parent"
+   				    android:shrinkColumns="*"
+    			    android:stretchColumns="*"
+    				android:weightSum="100" >
 
-        	<ImageButton
-        	    android:id="@+id/ButtonPreferito"
-        	    android:layout_width="wrap_content"
-        	    android:layout_height="wrap_content"
-        	    android:layout_alignLeft="@+id/imgInfo"
-        	    android:src="@drawable/pdf" />
+   					 <TableRow
+       						 android:layout_width="fill_parent"
+      						  android:layout_height="wrap_content"
+      						  android:layout_weight="100" >
+      						  
+        					<ImageButton
+      		  					android:id="@+id/ButtonChiamata"
+      		  					android:layout_width="wrap_content"
+      		  					android:layout_height="wrap_content"
+      		  					android:onClick="EventoChiamata"
+      		  					android:src="@drawable/pdf" />
+
+        					<ImageButton
+        	    				android:id="@+id/ButtonPreferito"
+        	    				android:layout_width="wrap_content"
+        	    				android:layout_height="wrap_content"
+        	    				android:layout_alignLeft="@+id/imgInfo"
+        	    				android:src="@drawable/pdf" />
                
-               <ImageButton
-      		  android:id="@+id/ButtonMappa"
-      		  android:layout_width="wrap_content"
-      		  android:layout_height="wrap_content"
-      		  android:src="@drawable/pdf" />
+             			    <ImageButton
+      		  					android:id="@+id/ButtonMappa"
+      		  					android:layout_width="wrap_content"
+      		  					android:layout_height="wrap_content"
+      		  					android:src="@drawable/pdf" />
+             			    
+             			    
+             			  </TableRow>
+               </TableLayout>
+              
                </LinearLayout>
  
 </LinearLayout>
