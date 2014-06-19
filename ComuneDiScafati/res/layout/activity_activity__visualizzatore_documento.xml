@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -27,32 +27,36 @@
         android:gravity="center"
         android:paddingLeft="15dp"
         android:text=""
-        android:textAppearance="?android:attr/textAppearanceSmall" >
+        android:textSize="18sp" >
     </TextView>
+
 <ScrollView
-        android:id="@+id/scrollDescr"
-        android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:layout_alignLeft="@+id/imgDoc"
-        android:layout_alignRight="@+id/titoloDoc"
-        android:layout_below="@+id/imgDoc"
-        android:layout_marginTop="14dp">
+    android:id="@+id/scrollDescr"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_above="@+id/allText"
+    android:layout_alignLeft="@+id/imgDoc"
+    android:layout_alignRight="@+id/titoloDoc"
+    android:layout_below="@+id/imgDoc"
+    android:layout_marginTop="14dp" >
 
             <TextView
                 android:id="@+id/descrDoc"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textSize="18sp" />
 
 </ScrollView>
 
 	<Spinner
         android:id="@+id/allSpin"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/scrollDescr"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:spinnerMode="dialog" />
 
     <ImageView
         android:id="@+id/allLineaBlu"
@@ -70,6 +74,8 @@
         android:layout_alignLeft="@+id/allSpin"
         android:text="Documenti Allegati"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#a7d5e1" />
+        android:textColor="#a7d5e1"
+        android:textSize="18sp"
+        android:paddingTop="3dp" />
 
 </RelativeLayout>

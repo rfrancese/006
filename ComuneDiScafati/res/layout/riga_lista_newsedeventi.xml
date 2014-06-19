@@ -8,6 +8,7 @@
         android:id="@+id/titoloNE"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:paddingTop="10dp" />
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
         android:gravity="right"
+        android:textSize="18sp"
         android:paddingBottom="10dp" />
 
 </LinearLayout>
