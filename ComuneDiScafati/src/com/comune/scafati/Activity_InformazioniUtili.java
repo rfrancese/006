@@ -14,6 +14,17 @@ import android.widget.ListView;
 public class Activity_InformazioniUtili extends ListActivity {
 	
 	String[] infoutili;
+	ListView list;
+	  Integer[] imageId = {
+	      R.drawable.icn_preferiti,
+	      R.drawable.icn_numeriutili,
+	      R.drawable.icn_istitutiscolastici,
+	      R.drawable.icn_farmaciediturno,
+	      R.drawable.icn_benzinai,
+	      R.drawable.icn_banche,
+	      R.drawable.icn_pizzerieeristoranti,
+	      R.drawable.icn_luoghidiculto
+	  };
 	String immagine;
     
 	// Metodo che viene chiamato alla creazione dell'activity.
@@ -21,12 +32,13 @@ public class Activity_InformazioniUtili extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
  
-        ListView listaV = getListView();
-        // Popolo la lista con le varie categorie di informazioni utili.
         infoutili = getResources().getStringArray(R.array.infoutili);
-        setListAdapter(new ArrayAdapter<String>(this, R.layout.riga_lista_infoutili, infoutili));
+        CustomList adapter = new
+        CustomList(Activity_InformazioniUtili.this, infoutili, imageId);
+        list = getListView();
+        list.setAdapter(adapter);
  
-        listaV.setOnItemClickListener(new OnItemClickListener() {
+        list.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             	/* Quando l'utente seleziona un elemento viene aperto Activity_VisInfoUtili
             	 * che mostra le informazioni richieste. */
