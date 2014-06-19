@@ -18,6 +18,7 @@
         <item>PIU Europa</item>
     </string-array>
     <string-array name="infoutili">
+        <item>Preferiti</item>
         <item>Numeri Utili</item>
         <item>Istituti Scolastici</item>
         <item>Farmacie di Turno</item>

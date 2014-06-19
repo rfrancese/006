@@ -7,10 +7,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -21,6 +24,12 @@ import android.widget.Toast;
  * visualizzare le informazioni di quel dato elemento. */
 public class Activity_VisInfoUtili extends Activity {
 	
+	ListView listViewVIS;
+    CustomAdapter adapter;
+    public  Activity_VisInfoUtili CustomListView = null;
+    public  ArrayList<ListVisInfoUtili> CustomListViewValuesArr = new ArrayList<ListVisInfoUtili>();
+    
+    
 	// Metodo che viene chiamato alla creazione dell'activity.
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,36 +50,22 @@ public class Activity_VisInfoUtili extends Activity {
 		TextView titolo =(TextView)findViewById(R.id.titoloInfo);
 		titolo.setText(tipo);
 		
-		// Apro il database
-		DBAdapter db = new DBAdapter(this);
-		db.open();
-		// Recupero dal database le informazioni utili del tipo richiesto.
-		Cursor c = db.getIU(tipo);
-		int numInfo = c.getCount();
-		// Formatto e visualizzo i dati prelevati dal database.
+	    TextView preferitonull =(TextView)findViewById(R.id.titolopreferitonull);
+	    
+		listViewVIS=(ListView)findViewById(R.id.listVisInfoUtili);
 		
-		ListView listViewVIS=(ListView)findViewById(R.id.listVisInfoUtili);
-		
-		ArrayList<HashMap<String, String>> listavisinfoutili = new ArrayList<HashMap<String, String>>();
-		listavisinfoutili=riempiLista(listavisinfoutili,numInfo,c);
-		
-	
-		//Costruzione adapter
-		String[] from = { "Titolo","Descrizione"};
-		
-		int[] to={R.id.titolodescr,R.id.descrInfo};
-		
-		SimpleAdapter adapter=new SimpleAdapter(
-				 this,
-				 listavisinfoutili,
-                 R.layout.riga_lista_visinfoutili,
-                 from,
-                 to
-                );
-		
-		listViewVIS.setAdapter(adapter);
-		System.out.print("\n"+numInfo+"\n");
-		db.close();
+		CustomListView = this;
+        
+		//funziona che avvalora la lista
+        setListData(tipo, preferitonull);
+         
+        Resources res =getResources();
+        // List defined in XML ( See Below )
+         
+    
+        adapter=new CustomAdapter( CustomListView, CustomListViewValuesArr,res );
+        listViewVIS.setAdapter( adapter );
+     
 	}
     
 	@Override
@@ -81,34 +76,58 @@ public class Activity_VisInfoUtili extends Activity {
 		return true;
 	}	
 	
-	private ArrayList<HashMap<String, String>> riempiLista(ArrayList<HashMap<String, String>> listavisinfoutili, int numInfo, Cursor c) {
-		for(int i=0;i<numInfo;i++)
+	 /****** Avvaloro la lista *************/
+    public void setListData(String tipo, TextView preferitonull)
+    {
+    	// Apro il database
+		DBAdapter db = new DBAdapter(this);
+		db.open();
+		// Recupero dal database le informazioni utili del tipo richiesto.
+		Cursor c = db.getIU(tipo);
+		int numInfo = c.getCount(); 
+		if(numInfo==0)
 		{
-		 c.moveToPosition(i);
-		 System.out.print("\n"+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");
-		 System.out.print("\n"+c.getString(c.getColumnIndex("Indirizzo"))+"\n");
-		 listavisinfoutili.add(  creaMappa( c.getString(c.getColumnIndex("Nome")),
-				 							c.getString(c.getColumnIndex("Descrizione"))
-				 							));
-		 
+			listViewVIS.setVisibility(View.GONE);
+			preferitonull.setVisibility(View.VISIBLE);
 		}
-        return listavisinfoutili;
+		else
+		{
+        for (int i = 0; i < numInfo; i++) 
+          {
+        	
+        	c.moveToPosition(i);
+            final ListVisInfoUtili sched = new ListVisInfoUtili();
+                 
+               sched.setTitolo(c.getString(c.getColumnIndex("Nome")));
+               sched.setDescrizione(c.getString(c.getColumnIndex("Descrizione")));
+               sched.setNumCell(c.getString(c.getColumnIndex("NumeroTelefono"))); 
+               
+            
+            CustomListViewValuesArr.add( sched );
+          }
+        
+		}
+      db.close();   
     }
-	
-	 private HashMap<String, String> creaMappa(String titolo, String descrizione) {
-		 
-		    HashMap<String, String> map = new HashMap<String, String>();
-		    
-		    map.put("Titolo", titolo);
-	    	map.put("Descrizione", descrizione);
-	 
-	    	return map;
-	    }   
-	public void EventoChiamata(View v)
-	{
-		String number = "tel:3463215001";
+    
+    /*****************  Queste funzioni sono usate dal CustomAdapter ****************/
+    
+    public void onChiamataClick(int mPosition)
+    {
+    	ListVisInfoUtili tempValues = ( ListVisInfoUtili ) CustomListViewValuesArr.get(mPosition);
+
+    	String number = "tel:" + tempValues.getNumCell();
+    	
         Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number)); 
         startActivity(callIntent);
-	}
+   
+    	//SHOW ALERT                  
+
+        //Toast.makeText(CustomListView,number,Toast.LENGTH_LONG).show();
+    }
 	
+    public void onPreferitoClick(int mPosition)
+    {
+    
+    }
 }
