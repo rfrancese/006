@@ -39,8 +39,20 @@
                    android:layout_alignLeft="@+id/imgInfo"
         		   android:layout_alignRight="@+id/titoloInfo"
         		   android:layout_below="@+id/imgInfo"
-        		   android:layout_marginTop="14dp" >
+        		   android:layout_marginTop="14dp"
+        		    >
                    
 				</ListView>
+				
+				 <TextView
+				     android:id="@+id/titolopreferitonull"
+				     android:layout_width="fill_parent"
+				     android:layout_height="fill_parent"
+				     android:layout_below="@+id/imgInfo"
+				     android:gravity="center"
+				     android:visibility="gone"
+				     android:text="Nessun elemento aggiunto ai preferiti"
+				     android:textAppearance="?android:attr/textAppearanceSmall" >
 
+                     </TextView>
 </RelativeLayout>
