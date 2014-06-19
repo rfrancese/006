@@ -48,12 +48,17 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -167,7 +172,7 @@ public class Activity_SegnalazioneReclami extends Activity {
 		String pictureName=String.format("%d",new Date().getTime());
 		imgurl="http://semplicementech.t15.org/comunescafati/uploads/"+pictureName+".jpg";
 		Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        File photo = new File(Environment.getExternalStorageDirectory(),  pictureName+".jpg");//save picture (.jpg) on SD Card
+        File photo = new File(Environment.getExternalStorageDirectory()+"/Pictures",  pictureName+".jpg");//save picture (.jpg) on SD Card
         u=Uri.fromFile(photo);
         intent.putExtra(MediaStore.EXTRA_OUTPUT,u);      
         filePath = photo.getAbsolutePath();        
@@ -225,7 +230,8 @@ public class Activity_SegnalazioneReclami extends Activity {
 	                                        buffIn.close();
 	                                        client.logout();
 	                                        client.disconnect();
-	                                    }                   
+	                                    }  
+	                                    file.setWritable(true);
 	                                    file.delete();
 	                              }                                              
 	                              catch (Exception e) {
@@ -264,10 +270,11 @@ public class Activity_SegnalazioneReclami extends Activity {
 	private class GPSLocationListener implements LocationListener {
 		@Override
 		public void onLocationChanged(Location location) {
-			localization=true;
-			loc=String.valueOf(location.getLatitude())+String.valueOf(location.getLongitude());
-        	posText.setText("Latitudine: "+String.valueOf(location.getLatitude())+"nLongitudine: "+String.valueOf(location.getLongitude()));
+			loc=String.valueOf(location.getLatitude())+" - "+String.valueOf(location.getLongitude());
+        	posText.setText("Latitudine: "+String.valueOf(location.getLatitude())+"\nLongitudine: "+String.valueOf(location.getLongitude()));
         	posButton.setText("Rimuovi Posizione");
+			localization=true;
+			undo=false;
 		}
 
 		@Override
@@ -346,7 +353,15 @@ public class Activity_SegnalazioneReclami extends Activity {
 		protected Void doInBackground(String... params) {
 		  String url_select = "http://semplicementech.t15.org/comunescafati/queryscript/setSegnalazioni.php";
 		    try {
-		  HttpClient httpClient = new DefaultHttpClient();
+		  HttpParams httpParameters = new BasicHttpParams();
+		  HttpProtocolParams.setContentCharset(httpParameters, "UTF-8");
+		  HttpProtocolParams.setHttpElementCharset(httpParameters, "UTF-8");
+		  
+		  HttpClient httpClient = new DefaultHttpClient(httpParameters);
+		  httpClient.getParams().setParameter("http.protocol.version", HttpVersion.HTTP_1_1);
+		  httpClient.getParams().setParameter("http.socket.timeout", new Integer(2000));
+		  httpClient.getParams().setParameter("http.protocol.content-charset", HTTP.UTF_8);
+		  httpParameters.setBooleanParameter("http.protocol.expect-continue", false);
 		  HttpPost httpPost = new HttpPost(url_select);
 
 	          ArrayList<NameValuePair> param = new ArrayList<NameValuePair>();
@@ -371,7 +386,7 @@ public class Activity_SegnalazioneReclami extends Activity {
 
 				}
 
-			httpPost.setEntity(new UrlEncodedFormEntity(param));
+			httpPost.setEntity(new UrlEncodedFormEntity(param, HTTP.UTF_8));
             HttpResponse response = httpClient.execute(httpPost);
             HttpEntity entity = response.getEntity();
 	        is = entity.getContent();
