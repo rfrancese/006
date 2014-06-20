@@ -156,7 +156,7 @@ public class Activity_SegnalazioneReclami extends Activity {
     	{
     		status=true;
     	}
-    	if(undo || posButton.getText()=="Rimuovi Posizione")
+    	if(undo || posButton.getText()=="Rimuovi")
     	{
     		lm.removeUpdates(gpsListener);
     		posText.setTextColor(Color.parseColor("#a7d5e1"));
@@ -272,7 +272,7 @@ public class Activity_SegnalazioneReclami extends Activity {
 		public void onLocationChanged(Location location) {
 			loc=String.valueOf(location.getLatitude())+" - "+String.valueOf(location.getLongitude());
         	posText.setText("Latitudine: "+String.valueOf(location.getLatitude())+"\nLongitudine: "+String.valueOf(location.getLongitude()));
-        	posButton.setText("Rimuovi Posizione");
+        	posButton.setText("Rimuovi");
 			localization=true;
 			undo=false;
 		}
