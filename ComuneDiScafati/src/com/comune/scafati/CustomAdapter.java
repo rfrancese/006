@@ -155,7 +155,7 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
    
         	Activity_VisInfoUtili sct = (Activity_VisInfoUtili)activity;
 
-         /****  questo metodo si trova nella classe Activity_VisInfoUtili serve a
+         /****  questo metodo si trova nella classe Activity_VisInfoUtili e serve a
           ****  sapere la posizione in cui sta il bottone****/
 
             sct.onPreferitoClick(mPosition);

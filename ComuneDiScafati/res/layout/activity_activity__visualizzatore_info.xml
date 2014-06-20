@@ -39,7 +39,7 @@
                    android:layout_alignLeft="@+id/imgInfo"
         		   android:layout_alignRight="@+id/titoloInfo"
         		   android:layout_below="@+id/imgInfo"
-        		   android:layout_marginTop="14dp"
+        		   android:layout_marginTop="15dp"
         		    >
                    
 				</ListView>
