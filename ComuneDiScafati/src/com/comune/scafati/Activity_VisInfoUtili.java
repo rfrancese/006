@@ -101,7 +101,7 @@ public class Activity_VisInfoUtili extends Activity {
                sched.setTitolo(c.getString(c.getColumnIndex("Nome")));
                sched.setDescrizione(c.getString(c.getColumnIndex("Descrizione")));
                sched.setNumCell(c.getString(c.getColumnIndex("NumeroTelefono"))); 
-               
+               sched.setID(c.getString(c.getColumnIndex("InfoUtili.CodiceIU")));
             
             CustomListViewValuesArr.add( sched );
           }
@@ -128,6 +128,22 @@ public class Activity_VisInfoUtili extends Activity {
 	
     public void onPreferitoClick(int mPosition)
     {
-    
+    	/*ListVisInfoUtili tempValues = ( ListVisInfoUtili ) CustomListViewValuesArr.get(mPosition);
+    	DBAdapter db = new DBAdapter(this);
+		db.open();
+		Cursor c;
+    	
+    	        Intent intent=getIntent();
+    	        String tipo = intent.getStringExtra("Tipo");
+    			DBAdapter db = new DBAdapter(this);
+    			db.open();
+    			// Recupero dal database le informazioni utili del tipo richiesto.
+    			Cursor c = db.getIU(tipo);
+    			int numInfo = c.getCount();
+    	
+		if()
+    	c=db.insertPreferito(tempValues.getID());	
+    			
+		 db.close();*/
     }
 }

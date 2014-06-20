@@ -175,5 +175,15 @@ public class DBAdapter extends ListActivity
     	String query = "select Indirizzo from FotoGalleria where CodiceG='"+id+"';";
     	return db.rawQuery(query, null);
     }
-   
+    
+    public Cursor insertPreferito(String id)
+    {
+    	String query = "INSERT INTO Preferiti (Preferito) VALUES ('"+id+"')";
+    	return db.rawQuery(query, null);
+    }
+    public Cursor deletePreferito(String id)
+    {
+    	String query = "DELETE FROM Preferiti WHERE Preferito ='"+id+"'";
+    	return db.rawQuery(query, null);
+    }
 }
