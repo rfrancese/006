@@ -82,7 +82,7 @@
         <activity
             android:name="com.comune.scafati.Activity_VisualizzatoreDocumento"
             android:label="Visualizzatore Documenti"
-            android:configChanges="orientation|screenSize"
+			android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -104,7 +104,7 @@
         <activity
             android:name="com.comune.scafati.Activity_VisInfoUtili"
             android:label="Informazioni Utili"
-            android:configChanges="orientation|screenSize"
+			android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
