@@ -25,7 +25,7 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
     public Resources res;
     ListVisInfoUtili tempValues=null;
     int i=0;
-     
+    int boxstate[]; 
     /*************  Metodo Costruttore *****************/
     public CustomAdapter(Activity a, ArrayList d,Resources resLocal) {
 
@@ -35,6 +35,10 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
 
             inflater = ( LayoutInflater )activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          
+            for (int i = 0; i < dataVIS.size(); i++) {
+                boxstate[i] = 0;
+
+                }
     }
  
     /******** Dimensione dell'arraylist ************/
@@ -108,17 +112,32 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
             {
             	holder.buttonchiamata.setVisibility(View.VISIBLE);
             }
-            
+           
+           holder.buttonpreferito.setTag(position);
            if(tempValues.getPreferito()==0)
             {
-            	holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti_off", "drawable", activity.getPackageName()));
-	
+        	   position=(Integer) vi.getTag();
+        	   boxstate[position]=0;
             }	
             else
             {
-            	holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti", "drawable", activity.getPackageName()));
+               position=(Integer) vi.getTag();
+               boxstate[position]=1;
 	
             }
+           
+           if(boxstate[position]==0)
+           {
+           	   holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti_off", "drawable", activity.getPackageName()));
+	
+           }	
+           else
+           {
+           	holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti", "drawable", activity.getPackageName()));
+	
+           }
+           
+           
            if(tempValues.getIndirizzo()==null)
        	{
        		holder.buttonmappa.setVisibility(View.INVISIBLE);
@@ -137,6 +156,7 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
              holder.buttonpreferito.setOnClickListener(new OnPreferitoClickListener( position ));
              holder.buttonmappa.setOnClickListener(new OnIndirizzoClickListener( position ));
         }
+        
         return vi;
     }
      
