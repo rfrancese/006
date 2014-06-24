@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.app.ListActivity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -118,7 +119,7 @@ public class DBAdapter extends ListActivity
     // Apre il database.
     public DBAdapter open() throws SQLException 
     {
-        db = DBHelper.getReadableDatabase();
+        db = DBHelper.getWritableDatabase();
         return this;
     }
 
@@ -153,7 +154,7 @@ public class DBAdapter extends ListActivity
     }
     // Restituisce tutti gli elementi che si riferscono a un tipo di Informazione utile.
     public Cursor getIU(String tipo)
-    {  String query=" select InfoUtili.CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo from InfoUtili,NumeriTelefonici,Indirizzi where NumeriTelefonici.CodiceIU=InfoUtili.CodiceIU and InfoUtili.CodiceIU=Indirizzi.CodiceIU and Tipo='"+tipo+"';";
+    {  String query=" select InfoUtili.CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo,Preferito from InfoUtili,NumeriIndirizzi where NumeriIndirizzi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"' Order by InfoUtili.CodiceIU ;";
     	//String query = "select Nome,Descrizione from InfoUtili where Tipo='"+tipo+"';";
     	return db.rawQuery(query, null);
     }
@@ -175,15 +176,19 @@ public class DBAdapter extends ListActivity
     	String query = "select Indirizzo from FotoGalleria where CodiceG='"+id+"';";
     	return db.rawQuery(query, null);
     }
+    //modifica i preferiti
+    public void alterPreferito(int i,String id)
+    {
+    	ContentValues cv=new ContentValues();
+    	String[] args={id};
+    	cv.put("Preferito", i);
+    	
+    	db.update("InfoUtili", cv, "CodiceIU=?", args);
+    }	
     
-    public Cursor insertPreferito(String id)
-    {
-    	String query = "INSERT INTO Preferiti (Preferito) VALUES ('"+id+"')";
-    	return db.rawQuery(query, null);
-    }
-    public Cursor deletePreferito(String id)
-    {
-    	String query = "DELETE FROM Preferiti WHERE Preferito ='"+id+"'";
+    public Cursor getPreferito()
+    {  String query=" select InfoUtili.CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo,Preferito from InfoUtili,NumeriIndirizzi where NumeriIndirizzi.CodiceIU=InfoUtili.CodiceIU and Preferito=1 Order by InfoUtili.CodiceIU ;";
+    	//String query = "select Nome,Descrizione from InfoUtili where Tipo='"+tipo+"';";
     	return db.rawQuery(query, null);
     }
 }

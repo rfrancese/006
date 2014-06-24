@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.util.Log;
 import android.view.Gravity;
@@ -95,10 +96,38 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
         }
         else
         {
-            /***** Ricevi ogni elemento dalla classe ListVisInfoUtili e lo mette nel Arraylist ********/
+            /***** Ricevi la posizione di ogni elemento dalla classe ListVisInfoUtili e lo mette nel Arraylist ********/
             tempValues=null;
             tempValues = ( ListVisInfoUtili ) dataVIS.get( position );
-
+        
+            if(tempValues.getNumCell()==null)
+        	{
+        		holder.buttonchiamata.setVisibility(View.INVISIBLE);
+        	}
+            else
+            {
+            	holder.buttonchiamata.setVisibility(View.VISIBLE);
+            }
+            
+           if(tempValues.getPreferito()==0)
+            {
+            	holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti_off", "drawable", activity.getPackageName()));
+	
+            }	
+            else
+            {
+            	holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti", "drawable", activity.getPackageName()));
+	
+            }
+           if(tempValues.getIndirizzo()==null)
+       	{
+       		holder.buttonmappa.setVisibility(View.INVISIBLE);
+       	}
+           else
+           {
+           	holder.buttonmappa.setVisibility(View.VISIBLE);
+           }
+           
              holder.titolo.setText( tempValues.getTitolo() );
              holder.descrizione.setText( tempValues.getDescrizione() );
               /*holder.image.setImageResource(
@@ -110,6 +139,7 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
 
              holder.buttonchiamata.setOnClickListener(new OnChiamataClickListener( position ));
              holder.buttonpreferito.setOnClickListener(new OnPreferitoClickListener( position ));
+             holder.buttonmappa.setOnClickListener(new OnIndirizzoClickListener( position ));
         }
         return vi;
     }
@@ -159,6 +189,27 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
           ****  sapere la posizione in cui sta il bottone****/
 
             sct.onPreferitoClick(mPosition);
+        }               
+    } 
+    
+
+    private class OnIndirizzoClickListener  implements OnClickListener{           
+        private int mPosition;
+         
+        OnIndirizzoClickListener(int position){
+             mPosition = position;
+        }
+         
+        @Override
+        public void onClick(View arg0) {
+
+   
+        	Activity_VisInfoUtili sct = (Activity_VisInfoUtili)activity;
+
+         /****  questo metodo si trova nella classe Activity_VisInfoUtili e serve a
+          ****  sapere la posizione in cui sta il bottone****/
+
+            sct.onMappaClick(mPosition);
         }               
     } 
 }

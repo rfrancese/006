@@ -29,7 +29,6 @@ public class Activity_VisInfoUtili extends Activity {
     public  Activity_VisInfoUtili CustomListView = null;
     public  ArrayList<ListVisInfoUtili> CustomListViewValuesArr = new ArrayList<ListVisInfoUtili>();
     
-    
 	// Metodo che viene chiamato alla creazione dell'activity.
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,6 @@ public class Activity_VisInfoUtili extends Activity {
 		// Recupero l'imageView dal Layout e il nome dell'immagine che verrˆ poi settata.
 		ImageView imgView=(ImageView)findViewById(R.id.imgInfo);
 		String immagine = "icn_"+tipo.replace(" ", "").toLowerCase();
-
 		imgView.setImageResource(getResources().getIdentifier(immagine, "drawable", getPackageName()));
 		
 		TextView titolo =(TextView)findViewById(R.id.titoloInfo);
@@ -84,29 +82,52 @@ public class Activity_VisInfoUtili extends Activity {
 		db.open();
 		// Recupero dal database le informazioni utili del tipo richiesto.
 		Cursor c = db.getIU(tipo);
+		Cursor b = db.getPreferito();
 		int numInfo = c.getCount(); 
-		if(numInfo==0)
-		{
-			listViewVIS.setVisibility(View.GONE);
-			preferitonull.setVisibility(View.VISIBLE);
-		}
-		else
-		{
-        for (int i = 0; i < numInfo; i++) 
-          {
-        	
-        	c.moveToPosition(i);
-            final ListVisInfoUtili sched = new ListVisInfoUtili();
-                 
-               sched.setTitolo(c.getString(c.getColumnIndex("Nome")));
-               sched.setDescrizione(c.getString(c.getColumnIndex("Descrizione")));
-               sched.setNumCell(c.getString(c.getColumnIndex("NumeroTelefono"))); 
-               sched.setID(c.getString(c.getColumnIndex("InfoUtili.CodiceIU")));
-            
-            CustomListViewValuesArr.add( sched );
-          }
-        
-		}
+		int numPref = b.getCount();
+		
+		 if(tipo.equalsIgnoreCase("Preferiti"))
+			{
+			 if(numPref==0)
+				{
+					listViewVIS.setVisibility(View.GONE);
+					preferitonull.setVisibility(View.VISIBLE);
+				}
+			 else
+				 for (int i = 0; i < numPref; i++) 
+					{
+	
+							listViewVIS.setVisibility(View.VISIBLE);
+							preferitonull.setVisibility(View.GONE);	
+						    b.moveToPosition(i);
+									final ListVisInfoUtili sched = new ListVisInfoUtili();
+									sched.setTitolo(b.getString(b.getColumnIndex("Nome")));
+									sched.setDescrizione(b.getString(b.getColumnIndex("Descrizione")));
+									sched.setNumCell(b.getString(b.getColumnIndex("NumeroTelefono"))); 
+									sched.setID(b.getString(b.getColumnIndex("InfoUtili.CodiceIU")));
+									sched.setPreferito(b.getInt(b.getColumnIndex("Preferito")));
+									sched.setIndirizzo(b.getString(b.getColumnIndex("Indirizzo")));
+
+							CustomListViewValuesArr.add( sched );
+						}
+			}
+		 else
+		 {
+           for (int i = 0; i < numInfo; i++) 
+        	{
+        		c.moveToPosition(i);
+                final ListVisInfoUtili sched = new ListVisInfoUtili();
+                     
+                   sched.setTitolo(c.getString(c.getColumnIndex("Nome")));
+                   sched.setDescrizione(c.getString(c.getColumnIndex("Descrizione")));
+                   sched.setNumCell(c.getString(c.getColumnIndex("NumeroTelefono"))); 
+                   sched.setID(c.getString(c.getColumnIndex("InfoUtili.CodiceIU")));
+                   sched.setPreferito(c.getInt(c.getColumnIndex("Preferito")));
+                   sched.setIndirizzo(c.getString(c.getColumnIndex("Indirizzo")));
+
+                CustomListViewValuesArr.add( sched );	
+        	}
+		 } 
       db.close();   
     }
     
@@ -115,35 +136,79 @@ public class Activity_VisInfoUtili extends Activity {
     public void onChiamataClick(int mPosition)
     {
     	ListVisInfoUtili tempValues = ( ListVisInfoUtili ) CustomListViewValuesArr.get(mPosition);
-
+    	
+    	
     	String number = "tel:" + tempValues.getNumCell();
     	
         Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number)); 
         startActivity(callIntent);
-   
+    	
+        
     	//SHOW ALERT                  
 
-        //Toast.makeText(CustomListView,number,Toast.LENGTH_LONG).show();
+        //Toast.makeText(CustomListView,tempValues.getNumCell(),Toast.LENGTH_LONG).show();
     }
 	
     public void onPreferitoClick(int mPosition)
     {
-    	/*ListVisInfoUtili tempValues = ( ListVisInfoUtili ) CustomListViewValuesArr.get(mPosition);
-    	DBAdapter db = new DBAdapter(this);
-		db.open();
-		Cursor c;
+    	ListVisInfoUtili tempValues = ( ListVisInfoUtili ) CustomListViewValuesArr.get(mPosition);
     	
     	        Intent intent=getIntent();
     	        String tipo = intent.getStringExtra("Tipo");
     			DBAdapter db = new DBAdapter(this);
     			db.open();
     			// Recupero dal database le informazioni utili del tipo richiesto.
-    			Cursor c = db.getIU(tipo);
-    			int numInfo = c.getCount();
-    	
-		if()
-    	c=db.insertPreferito(tempValues.getID());	
+    			//Cursor c = db.getIU(tipo);
+    			//Cursor b = db.getPreferito();
+  
+    			ImageButton buttonpreferito=(ImageButton)findViewById(R.id.ButtonPreferito);
     			
-		 db.close();*/
+    			
+    	//c.moveToPosition(mPosition);
+    	//b.moveToPosition(mPosition);
+    	//System.out.print("caccaaaaaa)"+mPosition+"tipo"+tipo+"\n");
+    	//System.out.print("prima dell'if("+c.getInt(c.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");	
+    	if(tipo.equalsIgnoreCase("Preferiti"))
+    	{
+    		    //System.out.print("cacca al quadrato");
+        		db.alterPreferito(0, tempValues.getID());
+        		tempValues.setPreferito(0);	
+        		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
+        		//System.out.print("dentro al then("+b.getInt(b.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+b.getString(b.getColumnIndex("InfoUtili.CodiceIU"))+"\n");		
+        		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();	
+    	}		
+    	else
+    	{	
+    	if(tempValues.getPreferito()==0)	
+    	{
+    		db.alterPreferito(1, tempValues.getID());
+    		tempValues.setPreferito(1);	
+    		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti", "drawable", getPackageName()));
+    		//System.out.print("dentro al then del secondo if("+c.getInt(c.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");		
+    		Toast.makeText(CustomListView,"Aggiunto ai preferiti ",Toast.LENGTH_LONG).show();
+    	}
+    	else
+  
+    	{   
+    		db.alterPreferito(0, tempValues.getID());
+    		tempValues.setPreferito(0);
+    		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
+    		//System.out.print("dentro all'else del secondo if("+c.getInt(c.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");
+    		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();
+    	}
+    	}
+      		
+		 db.close();
     }
+    
+    public void onMappaClick(int mPosition)
+    {
+    	ListVisInfoUtili tempValues = ( ListVisInfoUtili ) CustomListViewValuesArr.get(mPosition);
+    	
+    	String map = "http://maps.google.co.in/maps?q=" + tempValues.getIndirizzo(); 
+    	Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse(map));
+    	startActivity(intent);
+	
+    }
+    
 }

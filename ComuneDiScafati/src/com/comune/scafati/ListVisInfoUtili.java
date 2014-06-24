@@ -6,6 +6,7 @@ public class ListVisInfoUtili {
     private  String numcell="";
     private  String id="";
     private  String indirizzo="";
+    private  int preferito=0;
      
     //Metodi Modificatori
      
@@ -34,6 +35,10 @@ public class ListVisInfoUtili {
         this.indirizzo = indirizzo;
     }
      
+    public void setPreferito(int preferito)
+    {
+        this.preferito = preferito;
+    }
   //Metodi Accesso
      
     public String getTitolo()
@@ -59,5 +64,9 @@ public class ListVisInfoUtili {
     public String getIndirizzo()
     {
         return this.indirizzo;
+    } 
+    public int getPreferito()
+    {
+        return this.preferito;
     }  
 }
