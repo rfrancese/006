@@ -12,7 +12,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    
     <supports-screens android:smallScreens="true" 
 		android:normalScreens="true" 
 		android:largeScreens="true" 
@@ -36,6 +38,7 @@
         <activity
             android:name="com.comune.scafati.Activity_Amministrazione"
             android:label="Amministrazione"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -46,6 +49,7 @@
         <activity
             android:name="com.comune.scafati.Activity_CenniStorici"
             android:label="Cenni Storici"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -56,6 +60,7 @@
         <activity
             android:name="com.comune.scafati.Activity_InformazioniUtili"
             android:label="Informazioni Utili"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -66,6 +71,7 @@
         <activity
             android:name="com.comune.scafati.Activity_NewsEdEventi"
             android:label="News ed Eventi"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -76,6 +82,7 @@
         <activity
             android:name="com.comune.scafati.Activity_VisualizzatoreDocumento"
             android:label="Visualizzatore Documenti"
+			android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -86,6 +93,7 @@
         <activity
             android:name="com.comune.scafati.Activity_SegnalazioneReclami"
             android:label="Segnalazioni e Reclami"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -96,6 +104,7 @@
         <activity
             android:name="com.comune.scafati.Activity_VisInfoUtili"
             android:label="Informazioni Utili"
+			android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
@@ -106,6 +115,7 @@
         <activity
             android:name="com.comune.scafati.Activity_GalleriaFotografica"
             android:label="@string/title_activity_activity__galleria_fotografica"
+            android:configChanges="orientation|screenSize"
             android:theme="@android:style/Theme.Holo.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.ICSDESIGN" />
