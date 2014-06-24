@@ -154,7 +154,7 @@ public class DBAdapter extends ListActivity
     }
     // Restituisce tutti gli elementi che si riferscono a un tipo di Informazione utile.
     public Cursor getIU(String tipo)
-    {  String query=" select InfoUtili.CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo,Preferito from InfoUtili,NumeriIndirizzi where NumeriIndirizzi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"' Order by InfoUtili.CodiceIU ;";
+    {  String query=" select InfoUtili.CodiceIU as CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo,Preferito from InfoUtili,NumeriIndirizzi where NumeriIndirizzi.CodiceIU=InfoUtili.CodiceIU and Tipo='"+tipo+"' Order by InfoUtili.CodiceIU ;";
     	//String query = "select Nome,Descrizione from InfoUtili where Tipo='"+tipo+"';";
     	return db.rawQuery(query, null);
     }
@@ -187,7 +187,7 @@ public class DBAdapter extends ListActivity
     }	
     
     public Cursor getPreferito()
-    {  String query=" select InfoUtili.CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo,Preferito from InfoUtili,NumeriIndirizzi where NumeriIndirizzi.CodiceIU=InfoUtili.CodiceIU and Preferito=1 Order by InfoUtili.CodiceIU ;";
+    {  String query=" select InfoUtili.CodiceIU as CodiceIU,Nome,Descrizione,NumeroTelefono,Indirizzo,Preferito from InfoUtili,NumeriIndirizzi where NumeriIndirizzi.CodiceIU=InfoUtili.CodiceIU and Preferito=1 Order by InfoUtili.CodiceIU ;";
     	//String query = "select Nome,Descrizione from InfoUtili where Tipo='"+tipo+"';";
     	return db.rawQuery(query, null);
     }
