@@ -104,7 +104,7 @@ public class Activity_VisInfoUtili extends Activity {
 									sched.setTitolo(b.getString(b.getColumnIndex("Nome")));
 									sched.setDescrizione(b.getString(b.getColumnIndex("Descrizione")));
 									sched.setNumCell(b.getString(b.getColumnIndex("NumeroTelefono"))); 
-									sched.setID(b.getString(b.getColumnIndex("InfoUtili.CodiceIU")));
+									sched.setID(b.getString(b.getColumnIndex("CodiceIU")));
 									sched.setPreferito(b.getInt(b.getColumnIndex("Preferito")));
 									sched.setIndirizzo(b.getString(b.getColumnIndex("Indirizzo")));
 
@@ -121,7 +121,7 @@ public class Activity_VisInfoUtili extends Activity {
                    sched.setTitolo(c.getString(c.getColumnIndex("Nome")));
                    sched.setDescrizione(c.getString(c.getColumnIndex("Descrizione")));
                    sched.setNumCell(c.getString(c.getColumnIndex("NumeroTelefono"))); 
-                   sched.setID(c.getString(c.getColumnIndex("InfoUtili.CodiceIU")));
+                   sched.setID(c.getString(c.getColumnIndex("CodiceIU")));
                    sched.setPreferito(c.getInt(c.getColumnIndex("Preferito")));
                    sched.setIndirizzo(c.getString(c.getColumnIndex("Indirizzo")));
 
