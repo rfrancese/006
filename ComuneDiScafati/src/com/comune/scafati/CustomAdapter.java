@@ -130,10 +130,6 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
            
              holder.titolo.setText( tempValues.getTitolo() );
              holder.descrizione.setText( tempValues.getDescrizione() );
-              /*holder.image.setImageResource(
-                          res.getIdentifier(
-                          "com.androidexample.customlistview:drawable/"+tempValues.getImage()
-                          ,null,null));*/
               
              /******** Setto i onClickListener per ogni bottone *******/
 

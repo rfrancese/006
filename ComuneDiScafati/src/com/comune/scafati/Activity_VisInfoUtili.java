@@ -40,7 +40,7 @@ public class Activity_VisInfoUtili extends Activity {
 		
 		setTitle(tipo);
 		
-		// Recupero l'imageView dal Layout e il nome dell'immagine che verrˆ poi settata.
+		// Recupero l'imageView dal Layout e il nome dell'immagine che verra' poi settata.
 		ImageView imgView=(ImageView)findViewById(R.id.imgInfo);
 		String immagine = "icn_"+tipo.replace(" ", "").toLowerCase();
 		imgView.setImageResource(getResources().getIdentifier(immagine, "drawable", getPackageName()));
@@ -96,9 +96,6 @@ public class Activity_VisInfoUtili extends Activity {
 			 else
 				 for (int i = 0; i < numPref; i++) 
 					{
-	
-							listViewVIS.setVisibility(View.VISIBLE);
-							preferitonull.setVisibility(View.GONE);	
 						    b.moveToPosition(i);
 									final ListVisInfoUtili sched = new ListVisInfoUtili();
 									sched.setTitolo(b.getString(b.getColumnIndex("Nome")));
@@ -144,9 +141,6 @@ public class Activity_VisInfoUtili extends Activity {
         startActivity(callIntent);
     	
         
-    	//SHOW ALERT                  
-
-        //Toast.makeText(CustomListView,tempValues.getNumCell(),Toast.LENGTH_LONG).show();
     }
 	
     public void onPreferitoClick(int mPosition)
@@ -157,24 +151,14 @@ public class Activity_VisInfoUtili extends Activity {
     	        String tipo = intent.getStringExtra("Tipo");
     			DBAdapter db = new DBAdapter(this);
     			db.open();
-    			// Recupero dal database le informazioni utili del tipo richiesto.
-    			//Cursor c = db.getIU(tipo);
-    			//Cursor b = db.getPreferito();
   
     			ImageButton buttonpreferito=(ImageButton)findViewById(R.id.ButtonPreferito);
-    			
-    			
-    	//c.moveToPosition(mPosition);
-    	//b.moveToPosition(mPosition);
-    	//System.out.print("caccaaaaaa)"+mPosition+"tipo"+tipo+"\n");
-    	//System.out.print("prima dell'if("+c.getInt(c.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");	
+
     	if(tipo.equalsIgnoreCase("Preferiti"))
     	{
-    		    //System.out.print("cacca al quadrato");
         		db.alterPreferito(0, tempValues.getID());
         		tempValues.setPreferito(0);	
         		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
-        		//System.out.print("dentro al then("+b.getInt(b.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+b.getString(b.getColumnIndex("InfoUtili.CodiceIU"))+"\n");		
         		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();	
     	}		
     	else
@@ -184,7 +168,6 @@ public class Activity_VisInfoUtili extends Activity {
     		db.alterPreferito(1, tempValues.getID());
     		tempValues.setPreferito(1);	
     		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti", "drawable", getPackageName()));
-    		//System.out.print("dentro al then del secondo if("+c.getInt(c.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");		
     		Toast.makeText(CustomListView,"Aggiunto ai preferiti ",Toast.LENGTH_LONG).show();
     	}
     	else
@@ -193,7 +176,6 @@ public class Activity_VisInfoUtili extends Activity {
     		db.alterPreferito(0, tempValues.getID());
     		tempValues.setPreferito(0);
     		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
-    		//System.out.print("dentro all'else del secondo if("+c.getInt(c.getColumnIndex("Preferito"))+"ListVIUPreferito="+tempValues.getPreferito()+" ID="+c.getString(c.getColumnIndex("InfoUtili.CodiceIU"))+"\n");
     		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();
     	}
     	}
