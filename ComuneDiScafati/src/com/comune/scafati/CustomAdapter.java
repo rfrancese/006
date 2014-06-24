@@ -4,41 +4,34 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 public class CustomAdapter extends BaseAdapter   implements OnClickListener {
 	/*********** Dichiarazione Di Variabili *********/
     private Activity activity;
-    private ArrayList dataVIS;
+    private ArrayList<ListVisInfoUtili> dataVIS;
     private static LayoutInflater inflater=null;
     public Resources res;
     ListVisInfoUtili tempValues=null;
-    int i=0;
-    int boxstate[]; 
+    ViewHolder holder;
+
     /*************  Metodo Costruttore *****************/
-    public CustomAdapter(Activity a, ArrayList d,Resources resLocal) {
+    public CustomAdapter(Activity a, ArrayList<ListVisInfoUtili> d,Resources resLocal) {
 
             activity = a;
             dataVIS=d;
             res = resLocal;
 
             inflater = ( LayoutInflater )activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-         
-            for (int i = 0; i < dataVIS.size(); i++) {
-                boxstate[i] = 0;
 
-                }
     }
  
     /******** Dimensione dell'arraylist ************/
@@ -71,28 +64,25 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
     /****** Dipende dalle dimensioni dei dati chiamati per ogni riga. Creare ogni riga nella ListView *****/
     public View getView(int position, View convertView, ViewGroup parent) {
          
-        View vi = convertView;
-        ViewHolder holder;
-         
         if(convertView==null){
              
             /****** inserire il layout per le righe *******/
-            vi = inflater.inflate(R.layout.riga_lista_visinfoutili, null);
+        	convertView = inflater.inflate(R.layout.riga_lista_visinfoutili, null);
              
             /****** vista "porta-oggetti" per contenere gli elementi del file riga_lista_visinfoutili.xml ******/
 
             holder = new ViewHolder();
-            holder.titolo = (TextView) vi.findViewById(R.id.titolodescr);
-            holder.descrizione=(TextView)vi.findViewById(R.id.descrInfo);
-            holder.buttonchiamata=(ImageButton)vi.findViewById(R.id.ButtonChiamata);
-            holder.buttonpreferito=(ImageButton)vi.findViewById(R.id.ButtonPreferito);
-            holder.buttonmappa=(ImageButton)vi.findViewById(R.id.ButtonMappa);
+            holder.titolo = (TextView) convertView.findViewById(R.id.titolodescr);
+            holder.descrizione=(TextView)convertView.findViewById(R.id.descrInfo);
+            holder.buttonchiamata=(ImageButton)convertView.findViewById(R.id.ButtonChiamata);
+            holder.buttonpreferito=(ImageButton)convertView.findViewById(R.id.ButtonPreferito);
+            holder.buttonmappa=(ImageButton)convertView.findViewById(R.id.ButtonMappa);
              
            /************  imposta holder per layoutinflater ************/
-            vi.setTag( holder );
+            convertView.setTag( holder );
         }
         else 
-            holder=(ViewHolder)vi.getTag();
+            holder=(ViewHolder)convertView.getTag();
          
         if(dataVIS.size()<=0)
         {
@@ -114,26 +104,15 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
             }
            
            holder.buttonpreferito.setTag(position);
-           if(tempValues.getPreferito()==0)
-            {
-        	   position=(Integer) vi.getTag();
-        	   boxstate[position]=0;
-            }	
-            else
-            {
-               position=(Integer) vi.getTag();
-               boxstate[position]=1;
-	
-            }
            
-           if(boxstate[position]==0)
+           if(tempValues.getPreferito()==0)
            {
-           	   holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti_off", "drawable", activity.getPackageName()));
+           	   holder.buttonpreferito.setImageResource(convertView.getResources().getIdentifier("icn_preferiti_off", "drawable", activity.getPackageName()));
 	
            }	
            else
            {
-           	holder.buttonpreferito.setImageResource(vi.getResources().getIdentifier("icn_preferiti", "drawable", activity.getPackageName()));
+           	holder.buttonpreferito.setImageResource(convertView.getResources().getIdentifier("icn_preferiti", "drawable", activity.getPackageName()));
 	
            }
            
@@ -152,12 +131,12 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
               
              /******** Setto i onClickListener per ogni bottone *******/
 
-             holder.buttonchiamata.setOnClickListener(new OnChiamataClickListener( position ));
-             holder.buttonpreferito.setOnClickListener(new OnPreferitoClickListener( position ));
-             holder.buttonmappa.setOnClickListener(new OnIndirizzoClickListener( position ));
+             holder.buttonchiamata.setOnClickListener(new OnChiamataClickListener(position));
+             holder.buttonpreferito.setOnClickListener(new OnPreferitoClickListener(position));
+             holder.buttonmappa.setOnClickListener(new OnIndirizzoClickListener(position));
         }
         
-        return vi;
+        return convertView;
     }
      
     @Override
@@ -190,13 +169,18 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
     
     private class OnPreferitoClickListener  implements OnClickListener{           
         private int mPosition;
+        private int tagPosition;
          
         OnPreferitoClickListener(int position){
-             mPosition = position;
+        	mPosition = position;
         }
          
         @Override
-        public void onClick(View arg0) {
+        public void onClick(View v) {
+
+        	tagPosition=(Integer) v.getTag();
+        	Log.i("ConfirmAdapter ","Order       Edit @ position : " + mPosition);
+        	Log.i("ConfirmAdapter ","Order       Edit @ position : " + tagPosition);
 
    
         	Activity_VisInfoUtili sct = (Activity_VisInfoUtili)activity;

@@ -152,7 +152,7 @@ public class Activity_VisInfoUtili extends Activity {
     			DBAdapter db = new DBAdapter(this);
     			db.open();
   
-    			ImageButton buttonpreferito=(ImageButton)findViewById(R.id.ButtonPreferito);
+    			//ImageButton buttonpreferito=(ImageButton)findViewById(R.id.ButtonPreferito);
 
     	if(tipo.equalsIgnoreCase("Preferiti"))
     	{
@@ -175,7 +175,7 @@ public class Activity_VisInfoUtili extends Activity {
     	{   
     		db.alterPreferito(0, tempValues.getID());
     		tempValues.setPreferito(0);
-    		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
+    		//buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
     		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();
     	}
     	}
