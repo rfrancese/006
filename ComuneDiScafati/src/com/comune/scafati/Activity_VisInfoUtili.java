@@ -158,7 +158,7 @@ public class Activity_VisInfoUtili extends Activity {
     	{
         		db.alterPreferito(0, tempValues.getID());
         		tempValues.setPreferito(0);	
-        		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
+        		//buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
         		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();	
     	}		
     	else
@@ -167,7 +167,7 @@ public class Activity_VisInfoUtili extends Activity {
     	{
     		db.alterPreferito(1, tempValues.getID());
     		tempValues.setPreferito(1);	
-    		buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti", "drawable", getPackageName()));
+    		//buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti", "drawable", getPackageName()));
     		Toast.makeText(CustomListView,"Aggiunto ai preferiti ",Toast.LENGTH_LONG).show();
     	}
     	else
