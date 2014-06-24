@@ -26,6 +26,7 @@ public class Activity_VisInfoUtili extends Activity {
 	
 	ListView listViewVIS;
     CustomAdapter adapter;
+    TextView preferitonull;
     public  Activity_VisInfoUtili CustomListView = null;
     public  ArrayList<ListVisInfoUtili> CustomListViewValuesArr = new ArrayList<ListVisInfoUtili>();
     
@@ -48,7 +49,7 @@ public class Activity_VisInfoUtili extends Activity {
 		TextView titolo =(TextView)findViewById(R.id.titoloInfo);
 		titolo.setText(tipo);
 		
-	    TextView preferitonull =(TextView)findViewById(R.id.titolopreferitonull);
+	     preferitonull =(TextView)findViewById(R.id.titolopreferitonull);
 	    
 		listViewVIS=(ListView)findViewById(R.id.listVisInfoUtili);
 		
@@ -149,37 +150,41 @@ public class Activity_VisInfoUtili extends Activity {
     	
     	        Intent intent=getIntent();
     	        String tipo = intent.getStringExtra("Tipo");
-    			DBAdapter db = new DBAdapter(this);
+    			DBAdapter db = new DBAdapter(this);	
     			db.open();
-  
-    			//ImageButton buttonpreferito=(ImageButton)findViewById(R.id.ButtonPreferito);
-
+    			
+		
     	if(tipo.equalsIgnoreCase("Preferiti"))
     	{
         		db.alterPreferito(0, tempValues.getID());
-        		tempValues.setPreferito(0);	
-        		//buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
+        		tempValues.setPreferito(0);
+        		Cursor b=db.getPreferito();
+    			int numPreferito=b.getCount();
+        		 CustomListViewValuesArr.remove(mPosition);
+        		 if(numPreferito==0)
+        		 {
+        			 listViewVIS.setVisibility(View.GONE);
+ 					preferitonull.setVisibility(View.VISIBLE); 
+        		 }
         		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();	
     	}		
     	else
     	{	
     	if(tempValues.getPreferito()==0)	
-    	{
+    	 {
     		db.alterPreferito(1, tempValues.getID());
     		tempValues.setPreferito(1);	
-    		//buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti", "drawable", getPackageName()));
     		Toast.makeText(CustomListView,"Aggiunto ai preferiti ",Toast.LENGTH_LONG).show();
-    	}
+    	 }
     	else
   
-    	{   
+    	 {   
     		db.alterPreferito(0, tempValues.getID());
     		tempValues.setPreferito(0);
-    		//buttonpreferito.setImageResource(getResources().getIdentifier("icn_preferiti_off", "drawable", getPackageName()));
     		Toast.makeText(CustomListView,"Rimosso dai preferiti ",Toast.LENGTH_LONG).show();
-    	}
-    	}
-      		
+    	 }
+    	}	
+    	adapter.notifyDataSetChanged();
 		 db.close();
     }
     

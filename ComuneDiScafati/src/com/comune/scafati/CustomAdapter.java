@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CustomAdapter extends BaseAdapter   implements OnClickListener {
 	/*********** Dichiarazione Di Variabili *********/
@@ -22,6 +23,7 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
     public Resources res;
     ListVisInfoUtili tempValues=null;
     ViewHolder holder;
+    View vi;
 
     /*************  Metodo Costruttore *****************/
     public CustomAdapter(Activity a, ArrayList<ListVisInfoUtili> d,Resources resLocal) {
@@ -166,7 +168,7 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
             sct.onChiamataClick(mPosition);
         }               
     }   
-    
+
     private class OnPreferitoClickListener  implements OnClickListener{           
         private int mPosition;
         private int tagPosition;
@@ -182,13 +184,14 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
         	Log.i("ConfirmAdapter ","Order       Edit @ position : " + mPosition);
         	Log.i("ConfirmAdapter ","Order       Edit @ position : " + tagPosition);
 
-   
         	Activity_VisInfoUtili sct = (Activity_VisInfoUtili)activity;
 
          /****  questo metodo si trova nella classe Activity_VisInfoUtili e serve a
           ****  sapere la posizione in cui sta il bottone****/
 
-            sct.onPreferitoClick(mPosition);
+            sct.onPreferitoClick(tagPosition);
+            
+           
         }               
     } 
     
@@ -203,13 +206,16 @@ public class CustomAdapter extends BaseAdapter   implements OnClickListener {
         @Override
         public void onClick(View arg0) {
 
-   
+          
         	Activity_VisInfoUtili sct = (Activity_VisInfoUtili)activity;
 
          /****  questo metodo si trova nella classe Activity_VisInfoUtili e serve a
           ****  sapere la posizione in cui sta il bottone****/
 
             sct.onMappaClick(mPosition);
+            
+        	
+        	
         }               
     } 
 }
