@@ -41,6 +41,8 @@
         		   android:layout_alignRight="@+id/titoloInfo"
         		   android:layout_below="@+id/imgInfo"
         		   android:layout_marginTop="15dp"
+        		   android:clipToPadding="false"
+				   android:scrollbarStyle="outsideOverlay"
         		    >
                    
 				</ListView>
