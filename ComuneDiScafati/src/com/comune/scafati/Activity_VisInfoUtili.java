@@ -1,7 +1,6 @@
 package com.comune.scafati;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,12 +10,9 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 /* Questa classe viene visualizzata quando l'utente seleziona un elemento

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CustomAdapter extends BaseAdapter   implements OnClickListener {
 	/*********** Dichiarazione Di Variabili *********/

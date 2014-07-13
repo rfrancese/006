@@ -71,14 +71,6 @@ public class Activity_CenniStorici extends FragmentActivity implements
 		}
 	}
 
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Questo metodo crea la action bar.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {

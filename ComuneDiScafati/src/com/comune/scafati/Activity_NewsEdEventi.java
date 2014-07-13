@@ -20,7 +20,6 @@ import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.net.ConnectivityManager;
@@ -108,12 +107,6 @@ public class Activity_NewsEdEventi extends FragmentActivity implements
 	  }
 	} 
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Questo metodo crea la action bar.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,

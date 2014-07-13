@@ -1,22 +1,17 @@
 package com.comune.scafati;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
 
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -30,22 +25,16 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 import android.location.Location;
 import android.location.LocationListener;
-import android.app.AlertDialog;
 import android.widget.TextView;
 
-import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
-import org.apache.commons.net.ftp.FTPReply;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -59,12 +48,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-import com.comune.scafati.Activity_NewsEdEventi.DummySectionFragment2.task;
-import com.comune.scafati.Activity_NewsEdEventi.DummySectionFragment2.taskAll;
 
 /* Questa classe viene visualizzata quando l'utente seleziona
  * il pulsante "Segnalazioni e Reclami" nel MainActivity. */
@@ -134,12 +118,6 @@ public class Activity_SegnalazioneReclami extends Activity {
       });
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Questo metodo crea la action bar.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 	// Metodo settato come listener del pulsante "Reset" che si occupa di resettare i campi di testo.
 	public void Reset(View view) {  
 		EditText oggetto = (EditText) findViewById(R.id.oggetto);
